@@ -1,23 +1,48 @@
 package br.edu.infnet.financialcontrol.model.domain;
 
+import br.edu.infnet.financialcontrol.model.exceptions.ContaEmptyException;
+import br.edu.infnet.financialcontrol.model.exceptions.NameEmptyException;
+
 public class Partida extends Lancamento {
 
     private float debito;
 
     private float credito;
+    private boolean transacao;
+    private Historico hist;
     
-    public Partida(String name, float valor, String description, Conta conta ) {
+
+    public Partida(String name, float valor, String description, Conta conta, boolean transacao ) throws NameEmptyException, ContaEmptyException {
         super(name, valor,description,conta);
+        if(conta == null) {
+        	throw new ContaEmptyException("Conta necessaria para cadastrar partida");
+        }
+        if(transacao == true){
+            credito = valor;
+        }
+        else{
+            debito = valor;
+        }
+        this.transacao = transacao;
         //TODO Auto-generated constructor stub
     }
-    public Partida(String name, float valor, Conta conta) {
+    public Partida(String name, float valor, Conta conta, boolean transacao) throws NameEmptyException, ContaEmptyException {
         super(name, valor, conta);
-        //TODO Auto-generated constructor stub
+        if(conta == null) {
+        	throw new ContaEmptyException("Conta necessaria para cadastrar partida");
+        }
+        if(transacao == true){
+            credito = valor;
+        }
+        else{
+            debito = valor;
+        }
+        this.transacao = transacao;
     }
     @Override
     public float calcularValorFiscal() {
-        // TODO Auto-generated method stub
-        return 0;
+        float val = this.getValor();
+        return transacao == true ?  val * -1: val;
     }
     public float getCredito() {
         return credito;
@@ -32,5 +57,11 @@ public class Partida extends Lancamento {
     }
     public void setDebito(float debito) {
         this.debito = debito;
+    }
+    public Historico getHist() {
+        return hist;
+    }
+    public void setHist(Historico hist) {
+        this.hist = hist;
     }
 }

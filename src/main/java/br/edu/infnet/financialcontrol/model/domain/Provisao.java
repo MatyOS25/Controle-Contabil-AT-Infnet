@@ -2,34 +2,99 @@ package br.edu.infnet.financialcontrol.model.domain;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import br.edu.infnet.financialcontrol.model.exceptions.DataPrevNullException;
+import br.edu.infnet.financialcontrol.model.exceptions.FormatoDataException;
+import br.edu.infnet.financialcontrol.model.exceptions.NameEmptyException;
 
 public class Provisao extends Lancamento {
 
-    private Timestamp dataPrev; 
-    private Boolean saida = true;
+    private LocalDate dataPrev; 
+    private Boolean saida;
     private String infoAdicional;
+    private Historico hist;
     
     
-    public Provisao(String name, float valor, Timestamp dataPrev, Boolean saida) {
+    public Provisao(String name, float valor, String dataPrev, Boolean saida, Historico hist) throws FormatoDataException, NameEmptyException, DataPrevNullException {
+    	super(name, valor);
+    	if (dataPrev == null) {
+        	throw new DataPrevNullException("Data inserida nao inserida");
+        }
+        try{
+			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
+        this.saida = saida;
+        this.hist = hist;
+    }
+    public Provisao(String name, float valor, String dataPrev, Boolean saida) throws FormatoDataException, NameEmptyException, DataPrevNullException {
         super(name, valor);
-        this.dataPrev =dataPrev;
+        if (dataPrev == null) {
+        	throw new DataPrevNullException("Data inserida nao inserida");
+        }
+        try{
+			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
         this.saida = saida;
     }
-    public Provisao(String name, float valor, Timestamp dataPrev) {
+    public Provisao(String name, float valor, String dataPrev, Historico hist)throws FormatoDataException, NameEmptyException, DataPrevNullException {
         super(name, valor);
-        this.dataPrev = dataPrev;
+        if (dataPrev == null) {
+        	throw new DataPrevNullException("Data inserida nao inserida");
+        }
+        try{
+			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
+        this.saida = true;
+        this.hist = hist;
+    }
+    public Provisao(String name, float valor, String dataPrev)throws FormatoDataException, NameEmptyException, DataPrevNullException {
+        super(name, valor);
+        if (dataPrev == null) {
+        	throw new DataPrevNullException("Data inserida nao inserida");
+        }
+        try{
+			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
+        this.saida = true;
     }
     @Override
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append(";");
+		sb.append(saida ? "saida" : "entrada");
+		sb.append(";");
+		sb.append(dataPrev.toString());
+		sb.append(";");
+		sb.append(infoAdicional);
+
+		return sb.toString();
+	}
+    @Override
     public float calcularValorFiscal() {
-        return 0;
+        return saida == true ? -this.getValor() : this.getValor();
     }
 
     public String getData() {
-		String date = new SimpleDateFormat("dd/MM/yyyy").format(dataPrev.getTime());
-		return date;
+		return dataPrev.toString();
 	}
 
-	public void setData(Timestamp dataPrev) {
+	public void setData(LocalDate dataPrev) {
 		this.dataPrev = dataPrev;
 	}
     public Boolean getSaida() {
@@ -44,5 +109,11 @@ public class Provisao extends Lancamento {
     }
     public void setInfoAdicional(String infoAdicional) {
         this.infoAdicional = infoAdicional;
+    }
+    public Historico getHist() {
+        return hist;
+    }
+    public void setHist(Historico hist) {
+        this.hist = hist;
     }
 }

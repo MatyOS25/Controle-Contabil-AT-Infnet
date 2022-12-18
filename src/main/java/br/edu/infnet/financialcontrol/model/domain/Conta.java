@@ -2,14 +2,15 @@ package br.edu.infnet.financialcontrol.model.domain;
 
 public class Conta {
     private String conta;
-    private String tipoConta;
+    private boolean ativo;
+    
     private String banco;
     private Conta contaMae;
 
-    public Conta(String conta, String banco, String tipoConta) {
+    public Conta(String conta, String banco, boolean ativo) {
         this.conta = conta;
         this.banco = banco;
-        this.tipoConta = tipoConta;
+        this.ativo = ativo;
     }
     public String getConta() {
         return conta;
@@ -25,12 +26,7 @@ public class Conta {
         this.banco = banco;
     }
 
-    public String getTipoConta() {
-        return tipoConta;
-    }
-    public void setTipoConta(String tipoConta) {
-        this.tipoConta = tipoConta;
-    }
+    
     
     public Conta getContaMae(){
         return contaMae;
@@ -38,5 +34,10 @@ public class Conta {
     public void setContaMae(Conta contaMae){
         this.contaMae = contaMae;
     }
-    
+    public boolean isAtivo() {
+        return ativo;
+    }
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }   
 }
