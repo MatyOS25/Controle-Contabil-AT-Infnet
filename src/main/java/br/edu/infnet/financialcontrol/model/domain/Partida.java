@@ -10,8 +10,10 @@ public class Partida extends Lancamento {
     private float credito;
     private boolean transacao;
     private Historico hist;
+    private Investimento invest;
     
 
+    
     public Partida(String name, float valor, String description, Conta conta, boolean transacao ) throws NameEmptyException, ContaEmptyException {
         super(name, valor,description,conta);
         if(conta == null) {
@@ -63,5 +65,11 @@ public class Partida extends Lancamento {
     }
     public void setHist(Historico hist) {
         this.hist = hist;
+    }
+    public Investimento getInvest() {
+        return invest;
+    }
+    public void setInvest(Investimento invest) {
+        this.invest = invest;
     }
 }
