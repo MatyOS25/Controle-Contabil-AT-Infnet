@@ -22,7 +22,7 @@ public class TransacaoTeste {
 	public static void main(String[] args) {
 		User user;
 		try {
-			user = new User("Joao", "joao@gomes.com", "123.456.789-01");
+			user = new User("Joao", "joao@gomes.com", "123.456.789-01", "123123");
 			Conta conta = new Conta("Empresa de Tecnologia", "Santander", true);
 			List<Lancamento> lan1 = new ArrayList<Lancamento>();
 			Partida part1;

@@ -6,14 +6,16 @@ public class User{
     private String nome;
     private String email;
     private String cpf;
+    private String senha;
 
-    public User(String nome, String email, String cpf) throws UserIncompletoException {
-    	if(nome == null || email == null || cpf == null) {
+    public User(String nome, String email, String cpf, String senha) throws UserIncompletoException {
+    	if(nome == null || nome == "" || email == null || email == "" || cpf == null || cpf == "" || senha == null || senha == "" ) {
     		throw new UserIncompletoException("Nome, Email ou CPF estao com valor null");
     	}
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
+        this.senha = senha;
     }
 
     @Override
@@ -40,6 +42,10 @@ public class User{
     public String getCpf() {
         return cpf;
     }
+
+	public String getSenha() {
+		return senha;
+	}
 
 
 

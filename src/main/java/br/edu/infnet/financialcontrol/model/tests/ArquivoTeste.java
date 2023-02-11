@@ -49,7 +49,7 @@ public class ArquivoTeste {
 					switch (campos[0].toUpperCase()) {
 					case "T":		
 						try{
-							trans = new Transacao(new User(campos[5], campos[3], campos[4]), lancamentos);
+							trans = new Transacao(new User(campos[5], campos[3], campos[4],campos[6]), lancamentos);
 							trans.setData(campos[1]);
 							trans.setWeb(Boolean.valueOf(campos[2]));
 						}
