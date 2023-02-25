@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Users</title>
+<title>Login</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -14,44 +14,25 @@
               <div class="mx-auto max-w-md">
                 <h1 class="text-3xl font-bold antialiased text-white">Financial Control</h1>
                 <div class="p-10 mx-auto">
-                  <form action="/usuario" method="post">
+                  <form action="/login" method="post">
                     <div class="flex items-center mb-10">
-                      <label class="inline-block w-20 mr-6 text-center  
-                      font-bold text-white">Email:</label>
-                      <input type="text" name="email" value="joao@gomes.com.br"
-                      class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                                      text-gray-600 placeholder-gray-400
-                                      outline-none bg-gray-800" required
-                      />
-                  </div>
+                        <label class="inline-block w-20 mr-6 text-center  
+                        font-bold text-white">Email:</label>
+                        <input type="text" name="email" value="joao@gomes.com.br"
+                        class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
+                                        text-gray-600 placeholder-gray-400
+                                        outline-none bg-gray-800" required
+                        />
+                    </div>
                     <div class="flex items-center mb-5">
                         <label class="inline-block w-20 mr-6 text-center
                                 font-bold text-white">
                             Senha:
                         </label>
-                        <input type="password" name="senha" value="012012012" 
+                        <input type="password" name="senha" value="joao@gomes.com.br" 
                                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                                 text-gray-600 placeholder-gray-400
                                 outline-none bg-gray-800" required/>
-                    </div>
-                    <div class="flex items-center mb-5">
-                      <label class="inline-block w-20 mr-6 text-center
-                                  font-bold text-white">
-                          Nome:
-                      </label>
-                      <input type="text" name="nome" value="Joao Gomes" 
-                          class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                          text-gray-600 placeholder-gray-400
-                          outline-none bg-gray-800" required/>
-                  </div>
-                    <div class="flex items-center mb-5">
-                        <label class="inline-block w-20 mr-6 text-center  
-                        font-bold text-white">CPF:</label>
-                        <input type="text" name="cpf" value="000.000.000-00"
-                        class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                                        text-gray-600 placeholder-gray-400
-                                        outline-none bg-gray-800 " required
-                        />
                     </div>
                     <div class="text-right">
                       <button class="py-3 px-8 bg-green-400 text-white font-bold" type="submit">Submit</button> 

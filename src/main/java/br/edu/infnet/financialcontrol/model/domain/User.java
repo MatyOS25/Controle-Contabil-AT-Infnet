@@ -8,14 +8,14 @@ public class User{
     private String cpf;
     private String senha;
 
-    public User(String nome, String email, String cpf, String senha) throws UserIncompletoException {
+    public User(String email, String senha, String nome, String cpf) throws UserIncompletoException {
     	if(nome == null || nome == "" || email == null || email == "" || cpf == null || cpf == "" || senha == null || senha == "" ) {
     		throw new UserIncompletoException("Nome, Email ou CPF estao com valor null");
     	}
-        this.nome = nome;
         this.email = email;
-        this.cpf = cpf;
         this.senha = senha;
+        this.nome = nome;
+        this.cpf = cpf;
     }
 
     @Override

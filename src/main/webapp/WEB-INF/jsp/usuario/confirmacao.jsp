@@ -6,6 +6,14 @@
 <meta charset="ISO-8859-1">
 <title>Confirmado</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  function Redirect() 
+    {  
+        window.location="usuario/lista"; 
+    } 
+    document.write("You will be redirected to a new page in 5 seconds"); 
+    setTimeout('Redirect()', 5000);   
+</script>
 </head>
 <body>
     <div class="container">
