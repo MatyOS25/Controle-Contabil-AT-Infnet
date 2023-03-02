@@ -13,7 +13,7 @@ import br.edu.infnet.financialcontrol.model.repository.UserRepository;
 public class UsuarioController {
 	@GetMapping(value = "/usuario")
 	public String getTelaCadastro() {
-		return "redirect:/usuario/cadastro";
+		return "usuario/cadastro";
 	}
 
     @GetMapping(value = "usuario/lista")
