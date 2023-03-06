@@ -1,6 +1,7 @@
 package br.edu.infnet.financialcontrol.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -14,24 +15,27 @@ import br.edu.infnet.financialcontrol.model.repository.UserRepository;
 public class AcessoController {
     @GetMapping(value = "/")
 	public String telaIndex() {
-		return telaLogin();
+		return "index";
 	}
     @GetMapping(value = "/login")
 	public String telaLogin() {
 		return "/acesso/login";
 	}
     @PostMapping(value = "/login")
-    public String verificarLogin(Auth auth){
+    public String verificarLogin(Model model, Auth auth){
         System.out.print("Response "+ auth);
         try {
-            if(AcessoRepository.auth(auth) != null){
+            var getAuth = AcessoRepository.auth(auth);
+            if(getAuth != null){
+                UserRepository.add(getAuth);
                 return "redirect:/usuario/lista";
             }
         } catch (UserIncompletoException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return "redirect:/";
+        model.addAttribute("mensagem","As credenciais estão invalidas para: " + auth.getEmail());
+        return telaLogin();
     }
     
 }
