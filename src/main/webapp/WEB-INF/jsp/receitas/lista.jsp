@@ -9,6 +9,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+  <c:import url="/WEB-INF/jsp/menu.jsp"/>
     <div class="container">
         <div class="flex min-h-screen flex-col justify-center overflow-hidden bg-gray-900 py-6 sm:py-12">
           <div class="relative bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
