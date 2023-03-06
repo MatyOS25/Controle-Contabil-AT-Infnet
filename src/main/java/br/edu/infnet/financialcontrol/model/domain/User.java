@@ -7,6 +7,7 @@ public class User{
     private String email;
     private String cpf;
     private String senha;
+    private Integer id;
 
     public User(String email, String senha, String nome, String cpf) throws UserIncompletoException {
     	if(nome == null || nome == "" || email == null || email == "" || cpf == null || cpf == "" || senha == null || senha == "" ) {
@@ -30,6 +31,12 @@ public class User{
 		
 		return sb.toString();
 	}
+	  public void setId(Integer id){
+	    this.id = id; 
+	  }
+	  public Integer getId(){
+      return id;
+	  }
 
      public String getEmail() {
         return email;
