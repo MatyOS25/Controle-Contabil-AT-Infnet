@@ -9,7 +9,7 @@ import java.util.Collection;
 public class UserRepository {
     private static Integer id = 1;
     private static Map<Integer,User> mappedUsers = new HashMap<Integer, User>();
-    public static boolean add(User user){
+    public boolean add(User user){
         try{
             user.setId(id++);
             mappedUsers.put(user.getId(),user);
@@ -18,10 +18,10 @@ public class UserRepository {
             return false;
         }
     }
-    public static User removeUser(Integer key){
+    public User removeUser(Integer key){
       return mappedUsers.remove(key);  
     }
-    public static Collection<User> returnList(){
+    public Collection<User> returnList(){
         return  mappedUsers.values();
     }
 }

@@ -1,8 +1,10 @@
 package br.edu.infnet.financialcontrol.controller;
 
 import br.edu.infnet.financialcontrol.model.domain.User;
+import br.edu.infnet.financialcontrol.model.service.UserService;
 import br.edu.infnet.financialcontrol.repository.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("usuario")
 public class UsuarioController {
+  @Autowired
+  private UserService service;
+
   private String msg;
 
   @GetMapping(value = "/usuario")
@@ -22,7 +27,7 @@ public class UsuarioController {
 
   @GetMapping(value = "/usuario/lista")
   public String getUsers(Model model) {
-    model.addAttribute("usuarios", UserRepository.returnList());
+    model.addAttribute("usuarios", service.returnList());
     model.addAttribute("mensagem", msg);
     msg = null;
     return "usuario/lista";
@@ -33,7 +38,7 @@ public class UsuarioController {
     System.out.println("Return User: " + usuario);
 
     try {
-      var response = UserRepository.add(usuario);
+      var response = service.add(usuario);
       if (response == false) {
         throw new Exception("Error ao incluir");
       }
@@ -48,7 +53,7 @@ public class UsuarioController {
 
   @GetMapping(value = "/usuario/{id}/excluir")
   public String getRemove(@PathVariable Integer id) {
-    User user = UserRepository.removeUser(id);
+    User user = service.remove(id);
     msg = "Exclusão do usuario " + user.getNome() + " realizada com sucesso";
     return "redirect:/usuario/lista";
   }

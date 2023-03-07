@@ -5,7 +5,6 @@ import br.edu.infnet.financialcontrol.model.exceptions.UserIncompletoException;
 import br.edu.infnet.financialcontrol.repository.AcessoRepository;
 import br.edu.infnet.financialcontrol.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +30,6 @@ public class AcessoController {
     return "/acesso/login";
   }
 
-
   @PostMapping(value = "/login")
   public String verificarLogin(Model model, Auth auth) {
     System.out.print("Response " + auth);
@@ -46,8 +44,7 @@ public class AcessoController {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    model.addAttribute("mensagem", "As credenciais estão invalidas para: " +
-                                       auth.getEmail());
+    model.addAttribute("mensagem", "As credenciais estão invalidas para: " + auth.getEmail());
     return telaLogin();
   }
 
