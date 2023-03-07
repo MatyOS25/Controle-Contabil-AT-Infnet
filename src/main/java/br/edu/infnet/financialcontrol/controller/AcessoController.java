@@ -2,13 +2,16 @@ package br.edu.infnet.financialcontrol.controller;
 
 import br.edu.infnet.financialcontrol.model.domain.Auth;
 import br.edu.infnet.financialcontrol.model.exceptions.UserIncompletoException;
-import br.edu.infnet.financialcontrol.model.repository.AcessoRepository;
-import br.edu.infnet.financialcontrol.model.repository.UserRepository;
+import br.edu.infnet.financialcontrol.repository.AcessoRepository;
+import br.edu.infnet.financialcontrol.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("usuario")
@@ -28,6 +31,7 @@ public class AcessoController {
     return "/acesso/login";
   }
 
+
   @PostMapping(value = "/login")
   public String verificarLogin(Model model, Auth auth) {
     System.out.print("Response " + auth);
@@ -45,5 +49,12 @@ public class AcessoController {
     model.addAttribute("mensagem", "As credenciais estão invalidas para: " +
                                        auth.getEmail());
     return telaLogin();
+  }
+
+  @GetMapping(value = "/logout")
+  public String logout(HttpSession session, SessionStatus status) {
+    status.setComplete();
+    session.removeAttribute("usuario");
+    return "redirect:/";
   }
 }

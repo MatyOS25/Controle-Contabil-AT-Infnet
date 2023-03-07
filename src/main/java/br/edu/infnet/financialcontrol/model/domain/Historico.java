@@ -4,6 +4,8 @@ public class Historico {
     private String nome;
 
     private String cpf;
+
+    private Integer id;
     
     public Historico(String nome, String cpf) {
         this.nome = nome;
@@ -22,4 +24,11 @@ public class Historico {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
+	}
 }

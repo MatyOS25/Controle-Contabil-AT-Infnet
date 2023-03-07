@@ -7,39 +7,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.edu.infnet.financialcontrol.model.domain.Partida;
+import br.edu.infnet.financialcontrol.model.domain.Lancamento;
 import br.edu.infnet.financialcontrol.model.domain.User;
+import br.edu.infnet.financialcontrol.repository.LancamentosRepository;
 import br.edu.infnet.financialcontrol.repository.PartidasRepository;
 import br.edu.infnet.financialcontrol.repository.UserRepository;
 
 @Controller
-public class PartidasController {
+public class LancamentoController {
     private String msg;
 
-    @GetMapping(value = "/partidas/lista")
+    @GetMapping(value = "/lancamentos/lista")
 	public String getReceitas(Model model) {
-        model.addAttribute("lista", PartidasRepository.returnList());
+        model.addAttribute("lista", LancamentosRepository.returnList());
         model.addAttribute("mensagem", msg); 
         msg = null;
-		return "partidas/lista";
+		return "lancamentos/lista";
 	}
 
-    @GetMapping(value = "/partidas/new")
+    @GetMapping(value = "/lancamentos/new")
     public String getTelaCadastro() {
-        return "partidas/new";
+        return "lancamentos/new";
     }
 
-    @PostMapping(value = "/partidas/new")
-    public String post(Model model, Partida entidade) {
+    @PostMapping(value = "/lancamentos/new")
+    public String post(Model model, Lancamento entidade) {
         System.out.println("Return Transacao: " + entidade);
 
         try {
-        var response = PartidasRepository.add(entidade);
+        var response = LancamentosRepository.add(entidade);
         if (response == false) {
             throw new Exception("Error ao incluir");
         }
         msg = entidade.getId() + " incluido com sucesso!";
-        return "redirect:/partidas/lista";
+        return "redirect:/lancamentos/lista";
 
         } catch (Exception e) {
         System.out.println("Falha ao cadastrar! ");
@@ -47,11 +48,11 @@ public class PartidasController {
         }
     }
 
-    @GetMapping(value = "/partidas/{id}/excluir")
+    @GetMapping(value = "/lancamentos/{id}/excluir")
     public String getRemove(@PathVariable Integer id) {
-        Partida entidade = PartidasRepository.remove(id);
+        Lancamento entidade = LancamentosRepository.remove(id);
         msg = "Exclusão " + entidade.getId() + " realizada com sucesso";
-        return "redirect:/partidas/lista";
+        return "redirect:/lancamentos/lista";
     }
     
 }

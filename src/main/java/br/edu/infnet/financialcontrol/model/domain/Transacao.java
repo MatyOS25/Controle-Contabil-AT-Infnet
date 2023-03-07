@@ -17,6 +17,8 @@ public class Transacao {
 	private User user;
 	private List<Lancamento> lancamentos;
 
+	private Integer id;
+
 	public Transacao(User user, List<Lancamento> lancamentos) throws FormatoDataException {
 		this.user = user;
 		this.lancamentos = lancamentos;
@@ -93,6 +95,13 @@ public class Transacao {
 
 	public void setWeb(boolean web) {
 		this.web = web;
+	}
+
+	public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
 	}
 
 }

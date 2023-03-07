@@ -1,4 +1,4 @@
-package br.edu.infnet.financialcontrol.model.repository;
+package br.edu.infnet.financialcontrol.repository;
 import br.edu.infnet.financialcontrol.model.domain.User;
 import java.util.ArrayList;
 import java.util.List;

@@ -8,6 +8,8 @@ public abstract class Lancamento {
 	private String description = "Sem descricao";
 	private Conta conta;
 
+	private Integer id;
+
 
 	public Lancamento(String name, float valor, String description,Conta conta) throws NameEmptyException {
 		this(name, valor, description);
@@ -56,6 +58,14 @@ public abstract class Lancamento {
 	}
 	public String getDescription() {
 		return description;
+	}
+
+
+	public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
 	}
 	
 }

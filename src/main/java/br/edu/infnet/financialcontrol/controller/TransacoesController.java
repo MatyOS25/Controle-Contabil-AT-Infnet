@@ -7,39 +7,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.edu.infnet.financialcontrol.model.domain.Partida;
+import br.edu.infnet.financialcontrol.model.domain.Transacao;
 import br.edu.infnet.financialcontrol.model.domain.User;
-import br.edu.infnet.financialcontrol.repository.PartidasRepository;
+import br.edu.infnet.financialcontrol.repository.TransacoesRepository;
 import br.edu.infnet.financialcontrol.repository.UserRepository;
 
 @Controller
-public class PartidasController {
+public class TransacoesController {
     private String msg;
 
-    @GetMapping(value = "/partidas/lista")
+    @GetMapping(value = "/transacoes/lista")
 	public String getReceitas(Model model) {
-        model.addAttribute("lista", PartidasRepository.returnList());
+        model.addAttribute("lista", TransacoesRepository.returnList());
         model.addAttribute("mensagem", msg); 
         msg = null;
-		return "partidas/lista";
+		return "transacoes/lista";
 	}
 
-    @GetMapping(value = "/partidas/new")
+    @GetMapping(value = "/transacoes/new")
     public String getTelaCadastro() {
-        return "partidas/new";
+        return "transacoes/new";
     }
 
-    @PostMapping(value = "/partidas/new")
-    public String post(Model model, Partida entidade) {
+    @PostMapping(value = "/transacoes/new")
+    public String post(Model model, Transacao entidade) {
         System.out.println("Return Transacao: " + entidade);
 
         try {
-        var response = PartidasRepository.add(entidade);
+        var response = TransacoesRepository.add(entidade);
         if (response == false) {
             throw new Exception("Error ao incluir");
         }
         msg = entidade.getId() + " incluido com sucesso!";
-        return "redirect:/partidas/lista";
+        return "redirect:/transacoes/lista";
 
         } catch (Exception e) {
         System.out.println("Falha ao cadastrar! ");
@@ -47,11 +47,12 @@ public class PartidasController {
         }
     }
 
-    @GetMapping(value = "/partidas/{id}/excluir")
+    @GetMapping(value = "/transacoes/{id}/excluir")
     public String getRemove(@PathVariable Integer id) {
-        Partida entidade = PartidasRepository.remove(id);
+        Transacao entidade = TransacoesRepository.remove(id);
         msg = "Exclusão " + entidade.getId() + " realizada com sucesso";
-        return "redirect:/partidas/lista";
+        return "redirect:/transacoes/lista";
     }
-    
+
+
 }

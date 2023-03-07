@@ -7,6 +7,8 @@ public class Conta {
     private String banco;
     private Conta contaMae;
 
+    private Integer id;
+
     public Conta(String conta, String banco, boolean ativo) {
         this.conta = conta;
         this.banco = banco;
@@ -40,4 +42,11 @@ public class Conta {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }   
+
+    public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
+	}
 }

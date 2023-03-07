@@ -1,7 +1,8 @@
 package br.edu.infnet.financialcontrol.controller;
 
 import br.edu.infnet.financialcontrol.model.domain.User;
-import br.edu.infnet.financialcontrol.model.repository.UserRepository;
+import br.edu.infnet.financialcontrol.repository.UserRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,4 +52,5 @@ public class UsuarioController {
     msg = "Exclusão do usuario " + user.getNome() + " realizada com sucesso";
     return "redirect:/usuario/lista";
   }
+  
 }
