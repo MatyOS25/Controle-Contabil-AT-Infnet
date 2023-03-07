@@ -25,9 +25,9 @@
   
             <div class="mx-auto max-w-md">
             <div class="mb-5 flex items-center">
-                <h1 class="text-3xl font-bold text-white antialiased">Partidas</h1>
+                <h1 class="text-3xl font-bold text-white antialiased">Transacoes</h1>
                 <div class="text-right ml-8">
-                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/partidas/new">New</a>
+                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/transacoes/new">New</a>
                 </div>
               </div>
               
@@ -35,14 +35,14 @@
               <div class="mx-auto p-10">
               <c:if test="${empty lista}">
                        <div>
-                        <p class="truncate text-sm font-medium text-gray-900 dark:text-white">Nenhum usuario cadastrado</p>
+                        <p class="truncate text-sm font-medium text-gray-900 dark:text-white">Nenhuma transacao cadastrada</p>
                       </div>
               </c:if>
               <c:if test="${not empty lista}"> 
                 <div class="mb-5 flex items-center">
                   <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
                       <div>
-                        <p class="truncate text-sm font-medium text-gray-900 dark:text-white">Usuarios Cadastrados: ${lista.size()}</p>
+                        <p class="truncate text-sm font-medium text-gray-900 dark:text-white">Transacoes: ${lista.size()}</p>
                       </div>
                       
                       
@@ -60,7 +60,7 @@
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">${u.getData()}</div>
                         
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray                         -900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:                          text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" href="/partidas/${u.id}/excluir">
+                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray                         -900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:                          text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" href="/transacoes/${u.id}/excluir">
                             <span  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opa                         city-0">
                       Remove
                            </span>

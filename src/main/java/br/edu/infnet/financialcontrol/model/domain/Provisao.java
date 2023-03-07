@@ -15,6 +15,8 @@ public class Provisao extends Lancamento {
     private Boolean saida;
     private String infoAdicional;
     private Historico hist;
+
+    private Integer id;
     
     
     public Provisao(String name, float valor, String dataPrev, Boolean saida, Historico hist) throws FormatoDataException, NameEmptyException, DataPrevNullException {
@@ -44,6 +46,22 @@ public class Provisao extends Lancamento {
 		}
         this.saida = saida;
     }
+
+    public Provisao(String name, float valor, LocalDate dataPrev, Boolean saida) throws FormatoDataException, NameEmptyException, DataPrevNullException {
+        super(name, valor);
+        if (dataPrev == null) {
+        	throw new DataPrevNullException("Data inserida nao inserida");
+        }
+        try{
+			this.dataPrev = dataPrev; 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
+        this.saida = saida;
+    }
+
+
     public Provisao(String name, float valor, String dataPrev, Historico hist)throws FormatoDataException, NameEmptyException, DataPrevNullException {
         super(name, valor);
         if (dataPrev == null) {
@@ -116,4 +134,12 @@ public class Provisao extends Lancamento {
     public void setHist(Historico hist) {
         this.hist = hist;
     }
+
+
+    public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
+	}
 }

@@ -20,6 +20,27 @@ public class Reserva extends Lancamento {
 
     private String infoAdicional;
 
+    private Integer id;
+
+
+    public Reserva(String name, float valor, String dataPrev) throws FormatoDataException, InfoAdicionalIncompletaException, NameEmptyException{
+    	super(name, valor);
+        try{
+			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
+		}
+		catch(Exception e){
+			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
+		}
+        
+        //TODO Auto-generated constructor stub
+    }
+    public Reserva(String name, float valor, LocalDate dataPrev, String infoAdicional) throws FormatoDataException, InfoAdicionalIncompletaException, NameEmptyException{
+    	super(name, valor);
+        this.dataPrev = dataPrev;
+        this.infoAdicional = infoAdicional;
+        
+        //TODO Auto-generated constructor stub
+    }
 
     public Reserva(String name, float valor, String dataPrev, String infoAdicional) throws FormatoDataException, InfoAdicionalIncompletaException, NameEmptyException{
     	super(name, valor);
@@ -33,17 +54,6 @@ public class Reserva extends Lancamento {
 			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
 		}
         this.infoAdicional = infoAdicional;
-        
-        //TODO Auto-generated constructor stub
-    }
-    public Reserva(String name, float valor, String dataPrev) throws FormatoDataException, InfoAdicionalIncompletaException, NameEmptyException{
-    	super(name, valor);
-        try{
-			this.dataPrev = LocalDate.parse(dataPrev,DateTimeFormatter.ofPattern("yyyy-MM-dd")); 
-		}
-		catch(Exception e){
-			throw new FormatoDataException("A data precisa estar no formato yyyy-MM-dd"); 
-		}
         
         //TODO Auto-generated constructor stub
     }
@@ -93,6 +103,13 @@ public class Reserva extends Lancamento {
     public void setInfoAdicional(String infoAdicional) {
         this.infoAdicional = infoAdicional;
     }
+
+    public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
+	}
 
 
 

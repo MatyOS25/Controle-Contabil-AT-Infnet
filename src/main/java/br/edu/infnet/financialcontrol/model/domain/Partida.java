@@ -11,6 +11,8 @@ public class Partida extends Lancamento {
     private boolean transacao;
     private Historico hist;
     private Investimento invest;
+
+    private Integer id;
     
 
     
@@ -72,4 +74,11 @@ public class Partida extends Lancamento {
     public void setInvest(Investimento invest) {
         this.invest = invest;
     }
+
+    public void setId(Integer id){
+	    this.id = id; 
+	  }
+	public Integer getId(){
+		return id;
+	}
 }

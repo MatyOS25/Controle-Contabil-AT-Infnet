@@ -1,4 +1,4 @@
-package br.edu.infnet.financialcontrol.model.repository;
+package br.edu.infnet.financialcontrol.repository;
 import br.edu.infnet.financialcontrol.model.domain.User;
 import br.edu.infnet.financialcontrol.model.domain.Auth;
 import br.edu.infnet.financialcontrol.model.exceptions.UserIncompletoException;
