@@ -18,7 +18,8 @@
                   <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
                     <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
                     <span class="font-semibold mr-2 text-left flex-auto"> ${mensagem} </span>
-                    <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+                    <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
                   </div>
                 </div>
               </c:if>
@@ -27,7 +28,7 @@
             <div class="mb-5 flex items-center">
                 <h1 class="text-3xl font-bold text-white antialiased">Partidas</h1>
                 <div class="text-right ml-8">
-                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/partidas/new">New</a>
+                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/${controller}/new">New</a>
                 </div>
               </div>
               
@@ -60,8 +61,11 @@
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">${u.getData()}</div>
                         
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray                         -900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:                          text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" href="/partidas/${u.id}/excluir">
-                            <span  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opa                         city-0">
+                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900
+                           rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 
+                           hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" 
+                           href="/${controller}/${u.id}/excluir">
+                            <span  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                       Remove
                            </span>
                       </a>

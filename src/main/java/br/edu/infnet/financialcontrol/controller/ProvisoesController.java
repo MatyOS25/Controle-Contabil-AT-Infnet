@@ -1,7 +1,8 @@
 package br.edu.infnet.financialcontrol.controller;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,32 +10,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.edu.infnet.financialcontrol.controller.model.ControllerModel;
 import br.edu.infnet.financialcontrol.model.domain.Provisao;
-import br.edu.infnet.financialcontrol.model.domain.User;
 import br.edu.infnet.financialcontrol.model.exceptions.DataPrevNullException;
 import br.edu.infnet.financialcontrol.model.exceptions.FormatoDataException;
 import br.edu.infnet.financialcontrol.model.exceptions.NameEmptyException;
-import br.edu.infnet.financialcontrol.repository.ProvisoesRepository;
-import br.edu.infnet.financialcontrol.repository.UserRepository;
+import br.edu.infnet.financialcontrol.model.service.ProvisaoService;
 
 @Controller
-public class ProvisoesController {
-    private String msg;
+public class ProvisoesController extends ControllerModel<Provisao, ProvisaoService> {
+    public static final String controller = "provisoes";
 
-    @GetMapping(value = "/provisoes/lista")
-	public String getReceitas(Model model) {
-        model.addAttribute("lista", ProvisoesRepository.returnList());
-        model.addAttribute("mensagem", msg); 
-        msg = null;
-		return "provisoes/lista";
+    @Autowired
+    private static ProvisaoService service;
+
+    ProvisoesController() {
+        super(service, controller);
+        
+    }
+    @GetMapping(value = "/"+ controller + "/lista")
+	public String getLista(Model model) {
+        return super.getLista(model);
 	}
 
-    @GetMapping(value = "/provisoes/new")
+    @GetMapping(value = "/" + controller + "/new")
     public String getTelaCadastro() {
-        return "provisoes/new";
+        return super.getTelaCadastro();
     }
 
-    @PostMapping(value = "/provisoes/new")
+    @PostMapping(value = "/"+ controller +"/new")
     public String post(Model model, @RequestParam String name, @RequestParam LocalDate dataPrev, @RequestParam Float valor, @RequestParam Boolean saida) {
         Provisao entidade = null;
         try {
@@ -43,27 +47,11 @@ public class ProvisoesController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        System.out.println("Return Transacao: " + entidade);
-
-        try {
-        var response = ProvisoesRepository.add(entidade);
-        if (response == false) {
-            throw new Exception("Error ao incluir");
-        }
-        msg = entidade.getId() + " incluido com sucesso!";
-        return "redirect:/provisoes/lista";
-
-        } catch (Exception e) {
-        System.out.println("Falha ao cadastrar! ");
-        return getTelaCadastro();
-        }
+        return super.post(model, entidade);
     }
 
-    @GetMapping(value = "/provisoes/{id}/excluir")
+    @GetMapping(value = "/"+ controller +"/{id}/excluir")
     public String getRemove(@PathVariable Integer id) {
-        Provisao entidade = ProvisoesRepository.remove(id);
-        msg = "Exclusão " + entidade.getId() + " realizada com sucesso";
-        return "redirect:/provisoes/lista";
+        return super.getRemove(id);
     }
 }

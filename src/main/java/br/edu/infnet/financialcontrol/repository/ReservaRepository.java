@@ -3,10 +3,14 @@ import br.edu.infnet.financialcontrol.model.domain.Reserva;
 import br.edu.infnet.financialcontrol.model.domain.User;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;  
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.Collection;
 
+@Repository
 public class ReservaRepository {
     private static Integer id = 1;
     private static Map<Integer,Reserva> mappedEntity = new HashMap<Integer, Reserva>();

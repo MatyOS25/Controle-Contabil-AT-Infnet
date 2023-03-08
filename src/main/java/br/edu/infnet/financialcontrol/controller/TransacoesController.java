@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.infnet.financialcontrol.model.domain.Transacao;
-import br.edu.infnet.financialcontrol.model.domain.User;
 import br.edu.infnet.financialcontrol.repository.TransacoesRepository;
-import br.edu.infnet.financialcontrol.repository.UserRepository;
 
 @Controller
 public class TransacoesController {

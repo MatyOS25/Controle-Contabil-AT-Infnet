@@ -8,8 +8,9 @@ import java.time.format.DateTimeFormatter;
 import br.edu.infnet.financialcontrol.model.exceptions.DataPrevNullException;
 import br.edu.infnet.financialcontrol.model.exceptions.FormatoDataException;
 import br.edu.infnet.financialcontrol.model.exceptions.NameEmptyException;
+import br.edu.infnet.financialcontrol.model.service.interfaces.IModel;
 
-public class Provisao extends Lancamento {
+public class Provisao extends Lancamento{
 
     private LocalDate dataPrev; 
     private Boolean saida;

@@ -14,7 +14,7 @@
               <div class="mx-auto max-w-md">
                 <h1 class="text-3xl font-bold antialiased text-white">Financial Control</h1>
                 <div class="p-10 mx-auto">
-                  <form action="/reservas/new" method="post">
+                  <form action="/${controller}/new" method="post">
                     <div class="flex items-center mb-10">
                       <label class="inline-block w-20 mr-6 text-center  
                       font-bold text-white">Name:</label>

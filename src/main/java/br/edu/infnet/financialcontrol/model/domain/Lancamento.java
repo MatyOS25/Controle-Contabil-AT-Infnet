@@ -1,8 +1,9 @@
 package br.edu.infnet.financialcontrol.model.domain;
 
 import br.edu.infnet.financialcontrol.model.exceptions.NameEmptyException;
+import br.edu.infnet.financialcontrol.model.service.interfaces.IModel;
 
-public abstract class Lancamento {
+public abstract class Lancamento implements IModel {
 	private String name;
 	private float valor;
 	private String description = "Sem descricao";

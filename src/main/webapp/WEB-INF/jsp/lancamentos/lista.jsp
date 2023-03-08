@@ -27,7 +27,7 @@
             <div class="mb-5 flex items-center">
                 <h1 class="text-3xl font-bold text-white antialiased">Lancamentos</h1>
                 <div class="text-right ml-8">
-                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/lancamentos/new">New</a>
+                  <a class="rounded-lg bg-green-400 py-2 px-5 font-bold text-white" href="/"+ ${controller} +"/new">New</a>
                 </div>
               </div>
               
@@ -60,7 +60,7 @@
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">${u.getData()}</div>
                         
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray                         -900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:                          text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" href="/lancamentos/${u.id}/excluir">
+                          <a class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray                         -900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:                          text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" href="/"+ ${controller} +"/${u.id}/excluir">
                             <span  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opa                         city-0">
                       Remove
                            </span>

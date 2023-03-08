@@ -14,7 +14,7 @@
               <div class="mx-auto max-w-md">
                 <h1 class="text-3xl font-bold antialiased text-white">Financial Control</h1>
                 <div class="p-10 mx-auto">
-                  <form action="/partidas/new" method="post">
+                  <form action="/${controller}/new" method="post">
                     <div class="flex items-center mb-10">
                       <label class="inline-block w-20 mr-6 text-center  
                       font-bold text-white">Name:</label>
@@ -51,7 +51,7 @@
                       <input type="text" name="infoAdicional" value="" 
                           class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                           text-gray-600 placeholder-gray-400
-                          outline-none bg-gray-800" required/>
+                          outline-none bg-gray-800"/>
                   </div>
                     <div class="text-right">
                       <button class="py-3 px-8 bg-green-400 text-white font-bold" type="submit">Submit</button> 
