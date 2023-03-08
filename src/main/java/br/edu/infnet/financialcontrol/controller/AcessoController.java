@@ -2,9 +2,12 @@ package br.edu.infnet.financialcontrol.controller;
 
 import br.edu.infnet.financialcontrol.model.domain.Auth;
 import br.edu.infnet.financialcontrol.model.exceptions.UserIncompletoException;
+import br.edu.infnet.financialcontrol.model.service.UserService;
 import br.edu.infnet.financialcontrol.repository.AcessoRepository;
 import br.edu.infnet.financialcontrol.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,10 @@ import org.springframework.web.bind.support.SessionStatus;
 @Controller
 @SessionAttributes("usuario")
 public class AcessoController {
+  @Autowired
+  private UserService service;
+
+
   @GetMapping(value = "/")
   public String telaIndex() {
     return "index";
@@ -36,7 +43,7 @@ public class AcessoController {
     try {
       var getAuth = AcessoRepository.auth(auth);
       if (getAuth != null) {
-        UserRepository.add(getAuth);
+        service.add(getAuth);
         model.addAttribute("usuario", getAuth);
         return "redirect:/";
       }

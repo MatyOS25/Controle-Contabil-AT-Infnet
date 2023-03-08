@@ -2,10 +2,14 @@ package br.edu.infnet.financialcontrol.repository;
 import br.edu.infnet.financialcontrol.model.domain.User;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;  
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.Collection;
 
+@Repository
 public class UserRepository {
     private static Integer id = 1;
     private static Map<Integer,User> mappedUsers = new HashMap<Integer, User>();

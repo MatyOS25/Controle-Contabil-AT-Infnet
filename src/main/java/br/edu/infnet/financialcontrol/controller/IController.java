@@ -1,38 +1,19 @@
 package br.edu.infnet.financialcontrol.controller;
 
-import java.util.List;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import br.edu.infnet.financialcontrol.model.service.IService;
 
-import br.edu.infnet.financialcontrol.model.domain.Lancamento;
-import br.edu.infnet.financialcontrol.model.domain.User;
-import br.edu.infnet.financialcontrol.repository.LancamentosRepository;
-import br.edu.infnet.financialcontrol.repository.PartidasRepository;
-import br.edu.infnet.financialcontrol.repository.UserRepository;
-
-@Controller
-public class LancamentoController {
-    private String msg;
-    public static final String controller = "lancamentos";
-
-
-    @GetMapping(value = "/"+ controller + "/lista")
+public class IController<T extends IService> {
 	public String getLista(Model model) {
-        model.addAttribute("lista", LancamentosRepository.returnList());
+        model.addAttribute("lista", T.returnList());
         model.addAttribute("mensagem", msg); 
         msg = null;
 		return controller +"/lista";
 	}
 
-    @GetMapping(value = "/" + controller + "/new")
     public String getTelaCadastro() {
         return "lancamentos/new";
     }
 
-    @PostMapping(value = "/lancamentos/new")
     public String post(Model model, Lancamento entidade) {
         System.out.println("Return Transacao: " + entidade);
 
@@ -50,11 +31,9 @@ public class LancamentoController {
         }
     }
 
-    @GetMapping(value = "/lancamentos/{id}/excluir")
     public String getRemove(@PathVariable Integer id) {
         Lancamento entidade = LancamentosRepository.remove(id);
         msg = "Exclusão " + entidade.getId() + " realizada com sucesso";
         return "redirect:/lancamentos/lista";
     }
-    
 }
